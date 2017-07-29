@@ -1,11 +1,14 @@
 import Vue from 'vue'
-import { Button, Cell } from 'mint-ui'
+import VueRouter from 'vue-router'
 import App from './App.vue'
+import routerConfig from './router.config.js'
 
-Vue.component(Button.name, Button)
-Vue.component(Cell.name, Cell)
+Vue.use(VueRouter)
+
+const router = new VueRouter(routerConfig);
 
 new Vue({
+  router,
   el: '#app',
   render: h => h(App)
 })

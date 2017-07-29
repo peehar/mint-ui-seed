@@ -1,63 +1,44 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <mt-button type="default">default</mt-button>
-    <mt-button type="primary">primary</mt-button>
-    <mt-button type="danger">danger</mt-button>
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <mt-header :title="title"></mt-header>
+    <router-view></router-view>
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <mt-tabbar v-model="selected">
+      <mt-tab-item id="tab1">
+        <img slot="icon" src="./static/home.png"/>
+        首页
+      </mt-tab-item>
+      <mt-tab-item id="tab2">
+        发现
+      </mt-tab-item>
+      <mt-tab-item id="tab3">
+        我的
+      </mt-tab-item>
+    </mt-tabbar>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import { Header, Tabbar, TabItem } from 'mint-ui';
+
+Vue.component(Header.name, Header);
+Vue.component(Tabbar.name, Tabbar);
+Vue.component(TabItem.name, TabItem);
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+    name: 'app',
+    data () {
+        return {
+        msg: 'Welcome to Your Vue.js App',
+        title: "fdsafdasf"
+        }
     }
-  }
 }
+
+
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
